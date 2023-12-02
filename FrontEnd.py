@@ -108,7 +108,7 @@ def main():
     
     user_data = pd.DataFrame({
         'loan_amnt': [loan_amnt],
-        'term': [term],
+        'term': [term.split()[0]],
         'int_rate': [int_rate],
         'installment': [installment],
         'annual_inc': [annual_inc],
