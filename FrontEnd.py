@@ -128,7 +128,7 @@ def main():
     if st.button("Submit"):
         # Call the preprocessing function
         processed_data = preprocess_data(user_data)
-        model_ann = load_model('your_model.h5')
+        model_ann = load_model('ANN_model.h5')
         # Display the processed data
         st.subheader("Processed Application Data:")
         st.write(processed_data.shape)
