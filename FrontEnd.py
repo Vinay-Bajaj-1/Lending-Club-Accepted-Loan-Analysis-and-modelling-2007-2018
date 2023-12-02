@@ -1,5 +1,6 @@
 import streamlit as st
 import datetime
+import pandas as pd
 
 def main():
     st.title("Loan Application Form")
