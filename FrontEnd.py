@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[148]:
-
-
 import streamlit as st
 import pandas as pd
 import joblib
@@ -134,11 +128,13 @@ def main():
     if st.button("Submit"):
         # Call the preprocessing function
         processed_data = preprocess_data(user_data)
-
+        model_ann = joblib.load('ANN_model.h5')
         # Display the processed data
         st.subheader("Processed Application Data:")
         st.write(processed_data.shape)
         st.write(processed_data)
+        res= model_ann.predict(processed_data)
+        st.write(res)
         
         
 if __name__ == "__main__":
