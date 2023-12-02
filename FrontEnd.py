@@ -10,70 +10,70 @@ import joblib
 
 
 def preprocess_data(user_data):
-columns = ['loan_amnt', 'term', 'int_rate', 'installment', 'annual_inc',
-       'dti', 'earliest_cr_line', 'open_acc', 'pub_rec',
-       'revol_bal', 'revol_util', 'total_acc', 'mort_acc',
-       'pub_rec_bankruptcies', 'sub_grade_A2', 'sub_grade_A3', 'sub_grade_A4',
-       'sub_grade_A5', 'sub_grade_B1', 'sub_grade_B2', 'sub_grade_B3',
-       'sub_grade_B4', 'sub_grade_B5', 'sub_grade_C1', 'sub_grade_C2',
-       'sub_grade_C3', 'sub_grade_C4', 'sub_grade_C5', 'sub_grade_D1',
-       'sub_grade_D2', 'sub_grade_D3', 'sub_grade_D4', 'sub_grade_D5',
-       'sub_grade_E1', 'sub_grade_E2', 'sub_grade_E3', 'sub_grade_E4',
-       'sub_grade_E5', 'sub_grade_F1', 'sub_grade_F2', 'sub_grade_F3',
-       'sub_grade_F4', 'sub_grade_F5', 'sub_grade_G1', 'sub_grade_G2',
-       'sub_grade_G3', 'sub_grade_G4', 'sub_grade_G5',
-       'home_ownership_MORTGAGE', 'home_ownership_NONE',
-       'home_ownership_OTHER', 'home_ownership_OWN', 'home_ownership_RENT',
-       'verification_status_Source Verified', 'verification_status_Verified',
-       'purpose_credit_card', 'purpose_debt_consolidation',
-       'purpose_educational', 'purpose_home_improvement', 'purpose_house',
-       'purpose_major_purchase', 'purpose_medical', 'purpose_moving',
-       'purpose_other', 'purpose_renewable_energy', 'purpose_small_business',
-       'purpose_vacation', 'purpose_wedding', 'initial_list_status_w',
-       'application_type_Joint App']
-    
-df = pd.DataFrame(columns = columns)
-df.loc[0] = False
+    columns = ['loan_amnt', 'term', 'int_rate', 'installment', 'annual_inc',
+           'dti', 'earliest_cr_line', 'open_acc', 'pub_rec',
+           'revol_bal', 'revol_util', 'total_acc', 'mort_acc',
+           'pub_rec_bankruptcies', 'sub_grade_A2', 'sub_grade_A3', 'sub_grade_A4',
+           'sub_grade_A5', 'sub_grade_B1', 'sub_grade_B2', 'sub_grade_B3',
+           'sub_grade_B4', 'sub_grade_B5', 'sub_grade_C1', 'sub_grade_C2',
+           'sub_grade_C3', 'sub_grade_C4', 'sub_grade_C5', 'sub_grade_D1',
+           'sub_grade_D2', 'sub_grade_D3', 'sub_grade_D4', 'sub_grade_D5',
+           'sub_grade_E1', 'sub_grade_E2', 'sub_grade_E3', 'sub_grade_E4',
+           'sub_grade_E5', 'sub_grade_F1', 'sub_grade_F2', 'sub_grade_F3',
+           'sub_grade_F4', 'sub_grade_F5', 'sub_grade_G1', 'sub_grade_G2',
+           'sub_grade_G3', 'sub_grade_G4', 'sub_grade_G5',
+           'home_ownership_MORTGAGE', 'home_ownership_NONE',
+           'home_ownership_OTHER', 'home_ownership_OWN', 'home_ownership_RENT',
+           'verification_status_Source Verified', 'verification_status_Verified',
+           'purpose_credit_card', 'purpose_debt_consolidation',
+           'purpose_educational', 'purpose_home_improvement', 'purpose_house',
+           'purpose_major_purchase', 'purpose_medical', 'purpose_moving',
+           'purpose_other', 'purpose_renewable_energy', 'purpose_small_business',
+           'purpose_vacation', 'purpose_wedding', 'initial_list_status_w',
+           'application_type_Joint App']
+
+    df = pd.DataFrame(columns = columns)
+    df.loc[0] = False
 
 
-# 0 - 14
-df.iloc[0, :14] = user_data.iloc[0, :14]
+    # 0 - 14
+    df.iloc[0, :14] = user_data.iloc[0, :14]
 
-#handling categorical variables
-# 14 - 47
-for i in df.iloc[:, 14:47].columns:
-    if i.split('_')[-1] == user_data['sub_grade'][0]:
-        df[i] = True
+    #handling categorical variables
+    # 14 - 47
+    for i in df.iloc[:, 14:47].columns:
+        if i.split('_')[-1] == user_data['sub_grade'][0]:
+            df[i] = True
 
-#47 - 52
-for i in df.iloc[:, 48:53].columns:
-    if i.split('_')[-1] == user_data['home_ownership'][0]:
-        df[i] = True
+    #47 - 52
+    for i in df.iloc[:, 48:53].columns:
+        if i.split('_')[-1] == user_data['home_ownership'][0]:
+            df[i] = True
 
-#53 - 54
-for i in df.iloc[:, 53:55].columns:
-    if i.split('_')[-1] == user_data['verification_status'][0]:
-        df[i] = True
+    #53 - 54
+    for i in df.iloc[:, 53:55].columns:
+        if i.split('_')[-1] == user_data['verification_status'][0]:
+            df[i] = True
 
-#55 - 67
-for i in df.iloc[:, 55:68].columns:
-    temp = user_data['purpose'].str.replace(' ', '_').str.lower()
-    temp2 = i.split('purpose_')
-    if temp[0] ==  temp2[-1]:
-        df[i] = True
-# 68        
-if user_data['application_type'][0] == 'Joint App':
-    df['application_type_Joint App'] = True
-    
-if user_data['initial_list_status'][0] == 'w':
-    df['initial_list_status_w'] = True
-    
-  
-#scaling
-loaded_scaler = joblib.load('min_max_scaler.pkl')
-scaled_data = loaded_scaler.transform(df)
+    #55 - 67
+    for i in df.iloc[:, 55:68].columns:
+        temp = user_data['purpose'].str.replace(' ', '_').str.lower()
+        temp2 = i.split('purpose_')
+        if temp[0] ==  temp2[-1]:
+            df[i] = True
+    # 68        
+    if user_data['application_type'][0] == 'Joint App':
+        df['application_type_Joint App'] = True
 
-return scaled_data    
+    if user_data['initial_list_status'][0] == 'w':
+        df['initial_list_status_w'] = True
+
+
+    #scaling
+    loaded_scaler = joblib.load('min_max_scaler.pkl')
+    scaled_data = loaded_scaler.transform(df)
+
+    return scaled_data    
 
 def main():
     st.title("Loan Application Form")
