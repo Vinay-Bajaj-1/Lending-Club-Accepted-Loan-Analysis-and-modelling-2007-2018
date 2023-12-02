@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
-
+from tensorflow.keras.models import load_model
 
 def preprocess_data(user_data):
     columns = ['loan_amnt', 'term', 'int_rate', 'installment', 'annual_inc',
@@ -128,7 +128,7 @@ def main():
     if st.button("Submit"):
         # Call the preprocessing function
         processed_data = preprocess_data(user_data)
-        model_ann = joblib.load('ANN_model.h5')
+        model_ann = load_model('your_model.h5')
         # Display the processed data
         st.subheader("Processed Application Data:")
         st.write(processed_data.shape)
