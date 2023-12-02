@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# In[1]:
 
 
 import streamlit as st
@@ -72,7 +69,8 @@ def main():
         processed_data = preprocess_data(user_data)
 
         # Display the processed data
-        st.subheader("Processed Application Data:", processed_data.shape)
+        st.subheader("Processed Application Data:")
+        st.write(processed_data.shape)
         st.write(processed_data)
         
         
