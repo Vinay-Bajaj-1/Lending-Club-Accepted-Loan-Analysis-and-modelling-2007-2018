@@ -133,8 +133,8 @@ def main():
         st.subheader("Processed Application Data:")
         st.write(processed_data.shape)
         st.write(processed_data)
-        res= model_ann.predict(processed_data)
-        st.write(res)
+        #res= model_ann.predict(processed_data)
+        #st.write(res)
         
         
 if __name__ == "__main__":
