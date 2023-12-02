@@ -30,30 +30,41 @@ def main():
     application_type = st.selectbox("Application Type", ["Joint", "Individual"])
     mort_acc = st.number_input("Mortgage Accounts", min_value=0, step=1)
     pub_rec_bankruptcies = st.number_input("Public Record Bankruptcies", min_value=0, step=1)
+    
+    user_data = pd.DataFrame({
+        'loan_amnt': [loan_amnt],
+        'term': [term],
+        'int_rate': [int_rate],
+        'installment': [installment],
+        'sub_grade': [sub_grade],
+        'home_ownership': [home_ownership],
+        'annual_inc': [annual_inc],
+        'verification_status': [verification_status],
+        'purpose': [purpose],
+        'dti': [dti],
+        'earliest_cr_line': [earliest_cr_line],
+        'open_acc': [open_acc],
+        'pub_rec': [pub_rec],
+        'revol_bal': [revol_bal],
+        'revol_util': [revol_util],
+        'total_acc': [total_acc],
+        'initial_list_status': [initial_list_status],
+        'application_type': [application_type],
+        'mort_acc': [mort_acc],
+        'pub_rec_bankruptcies': [pub_rec_bankruptcies]
+    })
+    
 
     # Display the collected input
     if st.button("Submit"):
         st.success("Loan Application Submitted!")
-        st.write("Loan Amount:", loan_amnt)
-        st.write("Term:", term)
-        st.write("Interest Rate:", int_rate)
-        st.write("Installment:", installment)
-        st.write("Sub Grade:", sub_grade)
-        st.write("Home Ownership:", home_ownership)
-        st.write("Annual Income:", annual_inc)
-        st.write("Verification Status:", verification_status)
-        st.write("Purpose:", purpose)
-        st.write("Debt-to-Income Ratio:", dti)
-        st.write("Earliest Credit Line:", earliest_cr_line)
-        st.write("Open Accounts:", open_acc)
-        st.write("Public Records:", pub_rec)
-        st.write("Revolving Balance:", revol_bal)
-        st.write("Revolving Utilization:", revol_util)
-        st.write("Total Accounts:", total_acc)
-        st.write("Initial List Status:", initial_list_status)
-        st.write("Application Type:", application_type)
-        st.write("Mortgage Accounts:", mort_acc)
-        st.write("Public Record Bankruptcies:", pub_rec_bankruptcies)
+        st.dataframe(user_data)
+
+        # Preprocess the data
+        preprocessed_data = preprocess_data(user_data)
+        st.write("Preprocessed Data:")
+        st.dataframe(preprocessed_data)
+        
 
 if __name__ == "__main__":
     main()
