@@ -28,9 +28,11 @@ def submit_config(user_data):
     res_lr = round(float(model_lr.predict_proba(processed_data)[0][0] * 100 ), 2)
     res_rf = round(float(model_rf.predict_proba(processed_data)[0][0] *100),2)
     
-    col5.metric('Random Forest', res_rf, res_rf - 75)
     
-    col4.metric('Logistic Regression',res_lr, res_lr - 75)
+    col3.metric('Model Prediction', str(res_ann) + '%' , str(res_ann- 75)+ '%')
+    col4.metric('Logistic Regression',str(res_lr) + '%', res_lr - 75)
+    col5.metric('Random Forest', str(res_rf) + '%', res_rf - 75)
+    
     
     
     
@@ -38,7 +40,6 @@ def submit_config(user_data):
     #res_ann= round(float(res_ann) * 100, 2)
     #col2.subheader("Result") 
        
-    col3.metric('Model Prediction', str(res_ann) + '%' , str(res_ann- 75)+ '%')
     
     
 
