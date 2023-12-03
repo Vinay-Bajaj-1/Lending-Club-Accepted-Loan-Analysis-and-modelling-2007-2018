@@ -47,7 +47,7 @@ def submit_config(user_data):
     #else:
     #    col2.write("The Customer will not be able to repay the loan") 
     
-    col3.metric('Model Prediction', str(res_ann[0]) + '%' , str(res_ann- 50)+ '%')
+    col3.metric('Model Prediction', str(res_ann[0][0]) + '%' , str(res_ann- 50)+ '%')
     
     
 
