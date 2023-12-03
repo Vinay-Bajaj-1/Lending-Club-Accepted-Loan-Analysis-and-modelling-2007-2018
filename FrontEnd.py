@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(layout="wide")
 col1, col2 = st.columns(2)
 
-def submit_config():
+def submit_config(user_data):
     # Call the preprocessing function
     processed_data = preprocess_data(user_data)
     model_ann = load_model('ANN_model.h5')
@@ -95,7 +95,7 @@ def main():
     col1.title("Loan Application Form")
     
     if st.button("Submit"):
-        submit_config()  
+        submit_config(user_data)  
     # Get user input for various fields
     loan_amnt = col1.number_input("Loan Amount ($)", min_value=0, step=1)
     term = col1.selectbox("Term", ["36 months", "60 months"])
