@@ -150,6 +150,8 @@ def main():
     
     #visualization
     col2.title("Visualization")
+    
+    
         
 if __name__ == "__main__":
     main()
