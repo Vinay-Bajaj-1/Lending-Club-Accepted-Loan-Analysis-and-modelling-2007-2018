@@ -165,12 +165,10 @@ def visualizations():
     temp = pd.read_csv('loan_amnt.csv')
     sum_loan_amnt_1 = temp.loc[temp['loan_status'] == 1, 'loan_amnt'].sum()
     sum_loan_amnt_0 = temp.loc[temp['loan_status'] == 0, 'loan_amnt'].sum()
-    temp2 = pd.DataFrame({
-        'Loan Status': ['Fully Paid', 'Charged Off'],
-        'Loan Amount': [sum_loan_amnt_1, sum_loan_amnt_0]
-        })
+    
 
-    col2.plotly_chart(temp2)
+    col2.plotly_chart({'Fully Paid' : sum_loan_amnt_1,
+                      'Charged Off' : sum_loan_amnt_0})
     #col2.bar_chart(temp, x = 'loan_status', y = 'loan_amnt')
     
         
