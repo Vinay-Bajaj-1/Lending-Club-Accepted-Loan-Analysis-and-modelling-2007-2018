@@ -14,9 +14,9 @@ col3, col4, col5 = col2.columns(3)
 
 def result(value):
     if value == 1:
-        return 'Will be Able to pay'
+        return '+ve'
     else:
-        return 'Not be Able to pay'
+        return '-ve'
 
 
 def submit_config(user_data):
@@ -47,7 +47,7 @@ def submit_config(user_data):
     #else:
     #    col2.write("The Customer will not be able to repay the loan") 
     
-    col3.metric('Model Prediction', str(res_ann) + '%' , str(res_ann- 50)+ '%')
+    col3.metric('Model Prediction', str(res_ann[0]) + '%' , str(res_ann- 50)+ '%')
     
     
 
