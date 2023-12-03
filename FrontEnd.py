@@ -8,6 +8,21 @@ st.set_page_config(layout="wide")
 st.sidebar.header('User Input')
 
 
+def submit_button():
+    # Call the preprocessing function
+    processed_data = preprocess_data(user_data)
+    model_ann = load_model('ANN_model.h5')
+    # Display the processed data
+    #st.subheader("Processed Application Data:")
+    #st.write(processed_data.shape)
+    #st.write(user_data)
+    res= model_ann.predict(processed_data)
+    if res*100 >= 50:
+        st.write("The Customer will be able to repay the loan")
+    else:
+        st.write("The Customer will not be able to repay the loan") 
+    st.write(res * 100)
+
 def preprocess_data(user_data):
     columns = ['loan_amnt', 'term', 'int_rate', 'installment', 'annual_inc',
            'dti', 'earliest_cr_line', 'open_acc', 'pub_rec',
@@ -75,6 +90,10 @@ def preprocess_data(user_data):
     return scaled_data    
 
 def main():
+    if st.button("Submit"):
+        submit_button()
+    
+    
     st.title("Loan Application Form")
 
     # Get user input for various fields
@@ -144,7 +163,9 @@ def main():
         else:
             st.write("The Customer will not be able to repay the loan") 
         st.write(res * 100)
-        
+    
+    if st.button("Submit"):
+        submit_button()
         
 if __name__ == "__main__":
     main()
