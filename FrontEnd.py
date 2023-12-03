@@ -157,12 +157,17 @@ def main():
     
     if st.button("Submit"):
         submit_config(user_data)  
-        
+    
+    
+    visualizations()
+    
+def visualizations():
+    
     #visualization
     col2.title("Visualization")
     temp = pd.read_csv('loan_amnt.csv')
-    sum_loan_amnt_1 = df.loc[df['loan_status'] == 1, 'loan_amnt'].sum()
-    sum_loan_amnt_0 = df.loc[df['loan_status'] == 0, 'loan_amnt'].sum()
+    sum_loan_amnt_1 = temp.loc[temp['loan_status'] == 1, 'loan_amnt'].sum()
+    sum_loan_amnt_0 = temp.loc[temp['loan_status'] == 0, 'loan_amnt'].sum()
     values = [sum_loan_amnt_1, sum_loan_amnt_0]
     labels = ['Fully Paid', 'Charged Off']
     fig = go.Figure(
