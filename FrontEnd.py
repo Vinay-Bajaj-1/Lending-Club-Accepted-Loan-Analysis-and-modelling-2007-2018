@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 import keras
 from keras.models import load_model
-import plotly
+import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
@@ -161,7 +161,19 @@ def main():
     #visualization
     col2.title("Visualization")
     temp = pd.read_csv('loan_amnt.csv')
-    col2.bar_chart(temp, x = 'loan_status', y = 'loan_amnt')
+    sum_loan_amnt_1 = df.loc[df['loan_status'] == 1, 'loan_amnt'].sum()
+    sum_loan_amnt_0 = df.loc[df['loan_status'] == 0, 'loan_amnt'].sum()
+    values = [sum_loan_amnt_1, sum_loan_amnt_0]
+    labels = ['Fully Paid', 'Charged Off']
+    fig = go.Figure(
+        go.Pie(
+        labels = labels,
+        values = values,
+    ))
+
+    col2.header("Pie chart")
+    col2.plotly_chart(fig)
+    #col2.bar_chart(temp, x = 'loan_status', y = 'loan_amnt')
     
         
 if __name__ == "__main__":
