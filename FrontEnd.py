@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(layout="wide")
 st.title('Credit Risk Analysis')
 col1, col2 = st.columns([1.5, 2.5])
-
+col4, col3 = col2.columns(2)
         
 def submit_config(user_data):
     # Call the preprocessing function
