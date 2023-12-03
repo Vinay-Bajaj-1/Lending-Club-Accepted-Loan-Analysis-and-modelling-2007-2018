@@ -172,7 +172,7 @@ def visualizations():
     sum_by_year = sum_by_year.reset_index()
     sum_by_year.columns = ['issue_year', 'loan_amnt']
 
-    col2.area_chart(sum_by_year, x = 'issue_year' , y = 'loan_amnt', use_container_width=True)
+    col2.line_chart(sum_by_year, x = 'issue_year' , y = 'loan_amnt', use_container_width=True)
     
     
         
