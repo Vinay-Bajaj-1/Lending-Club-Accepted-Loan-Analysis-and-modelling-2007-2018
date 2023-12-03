@@ -167,14 +167,9 @@ def visualizations():
     sum_loan_amnt_0 = temp.loc[temp['loan_status'] == 0, 'loan_amnt'].sum()
     values = [sum_loan_amnt_1, sum_loan_amnt_0]
     labels = ['Fully Paid', 'Charged Off']
-    fig = go.Figure(
-        go.Pie(
-        labels = labels,
-        values = values,
-        
-    ))
+    temp2 = pd.DataFrame(values, columns = labels)
 
-    col2.plotly_chart(fig)
+    col2.plotly_chart(temp2)
     #col2.bar_chart(temp, x = 'loan_status', y = 'loan_amnt')
     
         
