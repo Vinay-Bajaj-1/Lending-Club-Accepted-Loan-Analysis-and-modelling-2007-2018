@@ -16,8 +16,8 @@ def submit_config(user_data):
     # Call the preprocessing function
     processed_data = preprocess_data(user_data)
     model_ann = load_model('ANN_model.h5')
-    model_lr = load_model('logreg_model.pkl')
-    model_dt = load_model('dt_clf_model.pkl')
+    model_lr = joblib.load('logreg_model.pkl')
+    model_dt = joblib.load('dt_clf_model.pkl')
     # Display the processed data
     #st.subheader("Processed Application Data:")
     #st.write(processed_data.shape)
