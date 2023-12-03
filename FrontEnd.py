@@ -43,7 +43,7 @@ def submit_config(user_data):
     #res_ann= round(float(res_ann) * 100, 2)
     #col2.subheader("Result") 
        
-    col3.metric('Model Prediction', str(res_ann) + '%' , str(res_ann- 50)+ '%')
+    col3.metric('Model Prediction', str(round(res_ann, 2)) + '%' , str(res_ann- 50)+ '%')
     
     
 
