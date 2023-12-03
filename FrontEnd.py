@@ -7,7 +7,7 @@ from keras.models import load_model
 st.set_page_config(layout="wide")
 col1, col2 = st.columns(2)
 
-
+st.title("Loan Application Form")
 
 def submit_config():
     # Call the preprocessing function
@@ -94,7 +94,7 @@ def main():
     if st.button("Submit"):
         submit_config()  
     
-    st.title("Loan Application Form")
+    
 
     # Get user input for various fields
     loan_amnt = col1.number_input("Loan Amount ($)", min_value=0, step=1)
