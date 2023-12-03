@@ -30,7 +30,7 @@ def submit_config(user_data):
     #st.write(processed_data.shape)
     #st.write(user_data)
     
-    res_ann = model_ann.predict(processed_data)
+    res_ann = float(model_ann.predict(processed_data)[0][0]) * 100
     res_lr = model_lr.predict(processed_data)
     res_rf = model_rf.predict(processed_data)
     
@@ -42,12 +42,8 @@ def submit_config(user_data):
     
     #res_ann= round(float(res_ann) * 100, 2)
     #col2.subheader("Result") 
-    #if res_ann * 100 >= 50:
-    #    col2.write("The Customer will be able to repay the loan")
-    #else:
-    #    col2.write("The Customer will not be able to repay the loan") 
-    
-    col3.metric('Model Prediction', str(res_ann[0][0]) + '%' , str(res_ann- 50)+ '%')
+       
+    col3.metric('Model Prediction', str(res_ann) + '%' , str(res_ann- 50)+ '%')
     
     
 
