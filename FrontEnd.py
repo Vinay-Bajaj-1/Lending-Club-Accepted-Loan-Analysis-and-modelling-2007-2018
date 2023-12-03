@@ -158,8 +158,8 @@ def main():
     col2.title("Visualization")
     pie_df = pd.read_csv('loan_amnt.csv')
     pie_df.columns = ['Loan Amount', 'Loan Status']
-    pie_df.loc[pie_df[Loan Status == 1]] = "Fully Paid"
-    pie_df.loc[pie_df[Loan Status == 0]] = "Charged Off"
+    pie_df.loc[pie_df['Loan Status' == 1]] = "Fully Paid"
+    pie_df.loc[pie_df['Loan Status' == 0]] = "Charged Off"
     sum_loan_amnt_1 = pie_df.loc[pie_df['loan_status'] == 1, 'loan_amnt'].sum()
     sum_loan_amnt_0 = pie_df.loc[pie_df['loan_status'] == 0, 'loan_amnt'].sum()
     col2.bar_chart(pie_df, y = 'Loan Amount' x = "Loan Status")
