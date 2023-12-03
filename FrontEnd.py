@@ -12,31 +12,27 @@ st.title('Credit Risk Analysis')
 col1, col2 = st.columns([1.5, 2.5])
 col3, col4, col5 = col2.columns(3)
 
-def result(value):
-    if value == 1:
-        return '+ve'
-    else:
-        return '-ve'
-
-
 def submit_config(user_data):
     # Call the preprocessing function
     processed_data = preprocess_data(user_data)
     model_ann = load_model('ANN_model.h5')
     model_lr = joblib.load('logreg_model.pkl')
     model_rf = joblib.load('rf_clf_model.joblib')
+    model_xg = joblib.load('xg_model.joblib')
     # Display the processed data
     #st.subheader("Processed Application Data:")
     #st.write(processed_data.shape)
     #st.write(user_data)
     
     res_ann = round(float(model_ann.predict(processed_data)[0][0]), 2) * 100
-    res_lr = model_lr.predict(processed_data)
-    res_rf = model_rf.predict(processed_data)
+    res_lr = model_lr.predict_proba(processed_data)
+    res_rf = model_rf.predict_proba(processed_data)
     
+    if res_rf < 0.75:
+        col5.metric(label = 'Random Forest', value = res_rf, 'thresh - 0.5')
     
     col4.metric(label = 'Logistic Regression', value = result(res_lr))
-    col5.metric(label = 'Random Forest', value = result(res_rf))
+    
     
     
     
