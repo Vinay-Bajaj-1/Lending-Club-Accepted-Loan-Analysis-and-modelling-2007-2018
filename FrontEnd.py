@@ -105,7 +105,7 @@ def preprocess_data(user_data):
 
 
     #scaling
-    loaded_scaler = joblib.load('min_max_scaler.pkl')
+    loaded_scaler = joblib.load('min_max_scaler.joblib')
     scaled_data = loaded_scaler.transform(df)
 
     return scaled_data    
