@@ -132,11 +132,15 @@ def main():
         processed_data = preprocess_data(user_data)
         model_ann = load_model('ANN_model.h5')
         # Display the processed data
-        st.subheader("Processed Application Data:")
-        st.write(processed_data.shape)
-        st.write(processed_data)
+        #st.subheader("Processed Application Data:")
+        #st.write(processed_data.shape)
+        #st.write(user_data)
         res= model_ann.predict(processed_data)
-        st.write(res)
+        if res < 0:
+            st.write("The Customer will not be able to repay the loan")
+        else:
+            st.write("The Customer will not be able to repay the loan") 
+        #st.write(res)
         
         
 if __name__ == "__main__":
