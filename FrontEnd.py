@@ -66,7 +66,6 @@ def preprocess_data(user_data):
 
     #scaling
     loaded_scaler = joblib.load('min_max_scaler.pkl')
-    st.write('scaled data')
     scaled_data = loaded_scaler.transform(df)
 
     return scaled_data    
@@ -77,7 +76,7 @@ def main():
     # Get user input for various fields
     loan_amnt = st.number_input("Loan Amount ($)", min_value=0, step=1)
     term = st.selectbox("Term", ["36 months", "60 months"])
-    int_rate = st.number_input("Interest Rate (%)", min_value=0.0, step=0.01)
+    int_rate = st.slider("Interest Rate (%)", min_value=0.0, max_value=20.0, step=0.01)
     installment = st.number_input("Installment ($)", min_value=0, step=1)
     sub_grade = st.selectbox("Sub Grade", ["A1", "A2", "A3", "A4", "A5", "B1", "B2", "B3", "B4", "B5",
                                            "C1", "C2", "C3", "C4", "C5", "D1", "D2", "D3", "D4", "D5",
