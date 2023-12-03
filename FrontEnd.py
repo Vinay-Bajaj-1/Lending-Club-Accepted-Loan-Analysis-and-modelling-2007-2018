@@ -167,13 +167,12 @@ def visualizations():
     sum_loan_amnt_0 = temp.loc[temp['loan_status'] == 0, 'loan_amnt'].sum()
     d= {'Fully Paid' : sum_loan_amnt_1, 'Charged Off' : sum_loan_amnt_0}
 
-    #col2.bar_chart(d)
-    #col2.bar_chart(temp, x = 'loan_status', y = 'loan_amnt')
+    col2.bar_chart(d)
     sum_by_year = temp.groupby('issue_year')['loan_amnt'].sum()
     sum_by_year = sum_by_year.reset_index()
     sum_by_year.columns = ['issue_year', 'loan_amnt']
 
-    col2.line_chart(sum_by_year, x = 'issue_year' , y = 'loan_amnt')
+    col2.line_chart(sum_by_year, x = 'issue_year' , y = 'loan_amnt', use_container_width=True)
     
     
         
