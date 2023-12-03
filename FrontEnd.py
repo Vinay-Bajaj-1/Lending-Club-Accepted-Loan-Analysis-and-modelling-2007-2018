@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import joblib
 import keras
 from keras.models import load_model
@@ -20,7 +21,7 @@ def submit_config(user_data):
     #st.write(processed_data.shape)
     #st.write(user_data)
     res= model_ann.predict(processed_data)
-    formatted_res = round(res * 100, 2)
+    formatted_res = np.round(res * 100, 2)
     if formatted_res >= 50:
         col2.write("The Customer will be able to repay the loan")
     else:
