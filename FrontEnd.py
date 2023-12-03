@@ -3,6 +3,7 @@ import pandas as pd
 import joblib
 import keras
 from keras.models import load_model
+import seaborn
 
 st.set_page_config(layout="wide")
 col1, col2 = st.columns(2)
@@ -150,6 +151,14 @@ def main():
     
     #visualization
     col2.title("Visualization")
+    pie_df = pd.read_csv('loan_amnt.csv')
+    sum_loan_amnt_1 = pie_df.loc[pie_df['loan_status'] == 1, 'loan_amnt'].sum()
+    sum_loan_amnt_0 = pie_df.loc[pie_df['loan_status'] == 0, 'loan_amnt'].sum()
+    labels = ['Loans Paid', 'Failed To Pay']
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels, autopct = "%1.1f%%", strangle = 90)
+    ax.axis('equal')
+    col2.pyplot(fig)
     
     
         
