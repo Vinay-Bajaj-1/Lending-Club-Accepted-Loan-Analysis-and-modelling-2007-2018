@@ -29,7 +29,7 @@ def submit_config(user_data):
     res_rf = round(float(model_rf.predict_proba(processed_data)[0][0] *100),2)
     
     
-    col3.metric('Model Prediction', str(res_ann) + '%' , str(res_ann- 75)+ '%')
+    col3.metric('ANN Prediction', str(res_ann) + '%' , str(res_ann- 75)+ '%')
     col4.metric('Logistic Regression',str(res_lr) + '%', res_lr - 75)
     col5.metric('Random Forest', str(res_rf) + '%', res_rf - 75)
     
@@ -40,11 +40,6 @@ def submit_config(user_data):
     #res_ann= round(float(res_ann) * 100, 2)
     #col2.subheader("Result") 
        
-    
-    
-
-    
-
     
 def preprocess_data(user_data):
     columns = ['loan_amnt', 'term', 'int_rate', 'installment', 'annual_inc',
