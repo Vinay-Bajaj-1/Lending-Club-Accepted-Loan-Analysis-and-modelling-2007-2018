@@ -12,6 +12,13 @@ st.title('Credit Risk Analysis')
 col1, col2 = st.columns([1.5, 2.5])
 col3, col4, col5 = col2.columns(3)
 
+def result(value):
+    if value == 1:
+        return 'Will be Able to pay'
+    else:
+        return 'Not be Able to pay'
+
+
 def submit_config(user_data):
     # Call the preprocessing function
     processed_data = preprocess_data(user_data)
@@ -23,14 +30,16 @@ def submit_config(user_data):
     #st.write(processed_data.shape)
     #st.write(user_data)
     
-    res_lr = model_lr.predict(processed_data)
-    col4.write(res_lr)
-    
-    res_dt = model_rf.predict(processed_data)
-    col5.write(res_dt)
-    
     res_ann = model_ann.predict(processed_data)
-    col3.write(res_ann)
+    res_lr = model_lr.predict(processed_data)
+    res_rf = model_rf.predict(processed_data)
+    
+    
+    col4.metric(result(res_lr))
+    col5.metric(result(res_dt))
+    
+    
+    #col3.metric(result(res_ann)
     #res_ann= round(float(res_ann) * 100, 2)
     col2.subheader("Result") 
     if res_ann * 100 >= 50:
