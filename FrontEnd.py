@@ -135,7 +135,7 @@ def main():
         #st.write(processed_data.shape)
         #st.write(user_data)
         res= model_ann.predict(processed_data)
-        if res*100 <= 50:
+        if res*100 >= 50:
             st.write("The Customer will be able to repay the loan")
         else:
             st.write("The Customer will not be able to repay the loan") 
