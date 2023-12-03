@@ -21,10 +21,13 @@ def submit_config(user_data):
     #st.write(user_data)
     res= model_ann.predict(processed_data)
     if res*100 >= 50:
-        st.write("The Customer will be able to repay the loan")
+        col2.write("The Customer will be able to repay the loan")
     else:
-        st.write("The Customer will not be able to repay the loan") 
-    st.write(res * 100)
+        col2.write("The Customer will not be able to repay the loan") 
+        
+    col2.bar_chart([res * 100])
+    
+    
 
     
 if st.button("Submit"):
