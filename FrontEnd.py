@@ -18,7 +18,7 @@ def submit_config(user_data):
     model_ann = load_model('ANN_model.h5')
     model_lr = joblib.load('logreg_model.pkl')
     model_rf = joblib.load('rf_clf_model.joblib')
-    model_xg = joblib.load('xg_model.joblib')
+    #model_xg = joblib.load('xgBoost_model.joblib')
     # Display the processed data
     #st.subheader("Processed Application Data:")
     #st.write(processed_data.shape)
@@ -28,11 +28,9 @@ def submit_config(user_data):
     res_lr = model_lr.predict_proba(processed_data)
     res_rf = model_rf.predict_proba(processed_data)
     
-    if res_rf < 0.75:
-        col5.metric('Random Forest', res_rf, res_rf - 0.75)
+    col5.metric('Random Forest', res_rf, res_rf - 0.75)
     
-    if model_lr < 0.75:
-        col4.metric('Logistic Regression',res_lr, res_lr - 0.75)
+    col4.metric('Logistic Regression',res_lr, res_lr - 0.75)
     
     
     
