@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
-col1, col2 = st.columns([2.5, 1.5])
+col1, col2 = st.columns([1.5, 2.5])
 
         
 def submit_config(user_data):
@@ -97,9 +97,7 @@ def preprocess_data(user_data):
     return scaled_data    
 
 def main():
-    col1.title("Loan Application Form")
-    
-    
+    col1.subheader("Loan Application Form")
         
     # Get user input for various fields
     loan_amnt = col1.number_input("Loan Amount ($)", min_value=0, step=1)
@@ -163,7 +161,7 @@ def main():
 def visualizations():
     
     #visualization
-    col2.title("Visualization")
+    col2.subheader("Visualization")
     temp = pd.read_csv('loan_amnt.csv')
     sum_loan_amnt_1 = temp.loc[temp['loan_status'] == 1, 'loan_amnt'].sum()
     sum_loan_amnt_0 = temp.loc[temp['loan_status'] == 0, 'loan_amnt'].sum()
@@ -176,7 +174,6 @@ def visualizations():
         
     ))
 
-    col2.header("Pie chart")
     col2.plotly_chart(fig)
     #col2.bar_chart(temp, x = 'loan_status', y = 'loan_amnt')
     
