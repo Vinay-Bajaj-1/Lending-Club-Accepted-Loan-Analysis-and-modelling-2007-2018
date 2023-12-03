@@ -174,7 +174,7 @@ def visualizations():
         go.Pie(
         labels = labels,
         values = values,
-        names = labels
+        
     ))
 
     col2.header("Pie chart")
