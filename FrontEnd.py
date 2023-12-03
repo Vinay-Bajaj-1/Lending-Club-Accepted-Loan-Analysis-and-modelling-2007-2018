@@ -97,6 +97,8 @@ def preprocess_data(user_data):
     return scaled_data    
 
 def main():
+    st.title('Credit Risk Analysis')
+    
     col1.subheader("Loan Application Form")
         
     # Get user input for various fields
