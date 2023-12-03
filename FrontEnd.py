@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import joblib
-#from tensorflow.keras.models import load_model
+
 
 def preprocess_data(user_data):
     columns = ['loan_amnt', 'term', 'int_rate', 'installment', 'annual_inc',
@@ -65,6 +65,7 @@ def preprocess_data(user_data):
 
     #scaling
     loaded_scaler = joblib.load('min_max_scaler.pkl')
+    st.write('scaled data')
     scaled_data = loaded_scaler.transform(df)
 
     return scaled_data    
@@ -128,13 +129,13 @@ def main():
     if st.button("Submit"):
         # Call the preprocessing function
         processed_data = preprocess_data(user_data)
-        model_ann = joblib.load('ANN_model.h5')
+        model_ann = joblib.load('rf_clf_model.pkl')
         # Display the processed data
         st.subheader("Processed Application Data:")
         st.write(processed_data.shape)
         st.write(processed_data)
-        #res= model_ann.predict(processed_data)
-        #st.write(res)
+        res= model_ann.predict(processed_data)
+        st.write(res)
         
         
 if __name__ == "__main__":
