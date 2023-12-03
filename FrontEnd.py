@@ -33,8 +33,9 @@ def submit_config(user_data):
     col4.metric('Logistic Regression',str(res_lr) + '%', res_lr - 75)
     col5.metric('Random Forest', str(res_rf) + '%', res_rf - 75)
     
-    res_bar = pd.DataFrame([[res_ann, res_lr, res_rf]], columns=['ANN', 'Logistic Regression', 'Random Forest'])
-    col2.bar_chart(res_bar,
+    col2.bar_chart({'ANN' : [res_ann],
+                    'Logistic Regression' : [res_lr],
+                    'Random Forest' : [res_rf]},
                   color=["#00589C", "#1891C3","#50E3C2"]
                   )
     
