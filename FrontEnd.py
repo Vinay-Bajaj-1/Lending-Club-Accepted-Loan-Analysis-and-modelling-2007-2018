@@ -139,7 +139,7 @@ def main():
             st.write("The Customer will not be able to repay the loan")
         else:
             st.write("The Customer will not be able to repay the loan") 
-        #st.write(res)
+        st.write(res)
         
         
 if __name__ == "__main__":
