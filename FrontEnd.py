@@ -7,8 +7,6 @@ from keras.models import load_model
 st.set_page_config(layout="wide")
 col1, col2 = st.columns(2)
 
-
-
 def submit_config():
     # Call the preprocessing function
     processed_data = preprocess_data(user_data)
@@ -24,6 +22,7 @@ def submit_config():
         st.write("The Customer will not be able to repay the loan") 
     st.write(res * 100)
 
+    
 def preprocess_data(user_data):
     columns = ['loan_amnt', 'term', 'int_rate', 'installment', 'annual_inc',
            'dti', 'earliest_cr_line', 'open_acc', 'pub_rec',
@@ -149,6 +148,8 @@ def main():
     })
     
     
+    #visualization
+    col2.title("Visualization")
         
 if __name__ == "__main__":
     main()
