@@ -100,6 +100,31 @@ def preprocess_data(user_data):
 def main():
     col1.title("Loan Application Form")
     
+    user_data = pd.DataFrame({
+        'loan_amnt': [loan_amnt],
+        'term': [term.split()[0]],
+        'int_rate': [int_rate],
+        'installment': [installment],
+        'annual_inc': [annual_inc],
+        'dti': [dti],
+        'earliest_cr_line': [earliest_cr_line],
+        'open_acc': [open_acc],
+        'pub_rec': [pub_rec],
+        'revol_bal': [revol_bal],
+        'revol_util': [revol_util],
+        'total_acc': [total_acc],
+        'mort_acc': [mort_acc],
+        'pub_rec_bankruptcies': [pub_rec_bankruptcies],
+        
+        'sub_grade': [sub_grade],
+        'home_ownership': [home_ownership],
+        'verification_status': [verification_status],
+        'purpose': [purpose],
+        'initial_list_status': [initial_list_status],
+        'application_type': [application_type],
+        
+    })
+    
     if st.button("Submit"):
         submit_config(user_data)  
         
@@ -131,30 +156,7 @@ def main():
     pub_rec_bankruptcies = col1.number_input("Public Record Bankruptcies", min_value=0, step=1)
 
     
-    user_data = pd.DataFrame({
-        'loan_amnt': [loan_amnt],
-        'term': [term.split()[0]],
-        'int_rate': [int_rate],
-        'installment': [installment],
-        'annual_inc': [annual_inc],
-        'dti': [dti],
-        'earliest_cr_line': [earliest_cr_line],
-        'open_acc': [open_acc],
-        'pub_rec': [pub_rec],
-        'revol_bal': [revol_bal],
-        'revol_util': [revol_util],
-        'total_acc': [total_acc],
-        'mort_acc': [mort_acc],
-        'pub_rec_bankruptcies': [pub_rec_bankruptcies],
-        
-        'sub_grade': [sub_grade],
-        'home_ownership': [home_ownership],
-        'verification_status': [verification_status],
-        'purpose': [purpose],
-        'initial_list_status': [initial_list_status],
-        'application_type': [application_type],
-        
-    })
+    
     
     
     #visualization
