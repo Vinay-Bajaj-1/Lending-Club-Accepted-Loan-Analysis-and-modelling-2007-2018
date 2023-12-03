@@ -35,8 +35,8 @@ def submit_config(user_data):
     res_rf = model_rf.predict(processed_data)
     
     
-    col4.metric(result(res_lr))
-    col5.metric(result(res_dt))
+    col4.metric(value = result(res_lr))
+    col5.metric(value = result(res_dt))
     
     
     #col3.metric(result(res_ann)
