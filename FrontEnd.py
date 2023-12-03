@@ -19,12 +19,13 @@ def submit_config(user_data):
     #st.write(processed_data.shape)
     #st.write(user_data)
     res= model_ann.predict(processed_data)
-    if res*100 >= 50:
+    formatted_res = f"{res * 100:.2f}"
+    if formatted_res >= 50:
         col2.write("The Customer will be able to repay the loan")
     else:
         col2.write("The Customer will not be able to repay the loan") 
-        
-    col2.metric('Percentage', res * 100)
+    col2.subheader("Result") 
+    col2.metric('Percentage', formatted_res)
     
     
 
