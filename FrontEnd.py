@@ -20,15 +20,15 @@ def submit_config(user_data):
     #st.subheader("Processed Application Data:")
     #st.write(processed_data.shape)
     #st.write(user_data)
-    res= model_ann.predict(processed_data)
-    
+    res = model_ann.predict(processed_data)
+    res= float(res)
     col2.subheader("Result") 
     if res * 100 >= 50:
         col2.write("The Customer will be able to repay the loan")
     else:
         col2.write("The Customer will not be able to repay the loan") 
     
-    col2.metric('Model Prediction %', np.round(res * 100,2), str(float(res-50)) + '%')
+    col2.metric('Model Prediction %', np.round(res * 100,2), str(float(res*100-50)) + '%')
     
     
 
