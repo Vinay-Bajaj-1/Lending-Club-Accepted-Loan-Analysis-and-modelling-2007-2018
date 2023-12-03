@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
 col1, col2 = st.columns(2)
-
+row1, row2 = col2.rows(2)
 
         
 def submit_config(user_data):
