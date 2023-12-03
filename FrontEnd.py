@@ -25,7 +25,7 @@ def submit_config(user_data):
     else:
         col2.write("The Customer will not be able to repay the loan") 
         
-    col2.bar_chart([res * 100])
+    col2.bar_chart(res * 100)
     
     
 
