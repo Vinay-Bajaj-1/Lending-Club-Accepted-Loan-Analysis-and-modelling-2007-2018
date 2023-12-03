@@ -33,12 +33,13 @@ def submit_config(user_data):
     col4.metric('Logistic Regression',str(res_lr) + '%', res_lr - 75)
     col5.metric('Random Forest', str(res_rf) + '%', res_rf - 75)
     
+    col2.bar_chart({'ANN' : res_ann,
+                    'Logistic Regression' : res_lr,
+                    'Random Forest' : res_rf})
     
     
     
-    
-    #res_ann= round(float(res_ann) * 100, 2)
-    #col2.subheader("Result") 
+
        
     
 def preprocess_data(user_data):
@@ -173,7 +174,7 @@ def main():
 def visualizations():
     
     #visualization
-    col2.subheader("Visualization")
+    col2.subheader("Visualizations")
     temp = pd.read_csv('loan_amnt.csv')
     sum_loan_amnt_1 = temp.loc[temp['loan_status'] == 'Fully Paid', 'loan_amnt'].sum()
     sum_loan_amnt_0 = temp.loc[temp['loan_status'] == 'Charged Off', 'loan_amnt'].sum()
