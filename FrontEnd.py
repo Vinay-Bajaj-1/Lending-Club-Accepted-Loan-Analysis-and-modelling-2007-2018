@@ -22,12 +22,13 @@ def submit_config(user_data):
     #st.write(user_data)
     res= model_ann.predict(processed_data)
     formatted_res = np.round(res * 100, 2)
+    col2.subheader("Result") 
     if formatted_res >= 50:
         col2.write("The Customer will be able to repay the loan")
     else:
         col2.write("The Customer will not be able to repay the loan") 
-    col2.subheader("Result") 
-    col2.metric('Percentage', formatted_res)
+    
+    col2.metric('Model Prediction %', formatted_res, str(50 - formatted_res) + "%")
     
     
 
