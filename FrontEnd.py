@@ -164,8 +164,8 @@ def main():
             st.write("The Customer will not be able to repay the loan") 
         st.write(res * 100)
     
-    if st.button("Submit"):
-        submit_button()
+    '''if st.button("Submit"):
+        submit_button()'''
         
 if __name__ == "__main__":
     main()
