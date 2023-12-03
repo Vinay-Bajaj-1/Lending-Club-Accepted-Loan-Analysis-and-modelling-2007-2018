@@ -5,10 +5,12 @@ import keras
 from keras.models import load_model
 
 st.set_page_config(layout="wide")
-st.sidebar.header('User Input')
+col1, col2 = st.columns(2)
 
+if st.button("Submit"):
+    submit_config()
 
-def submit_button():
+def submit_config():
     # Call the preprocessing function
     processed_data = preprocess_data(user_data)
     model_ann = load_model('ANN_model.h5')
@@ -97,23 +99,23 @@ def main():
     st.title("Loan Application Form")
 
     # Get user input for various fields
-    loan_amnt = st.sidebar.number_input("Loan Amount ($)", min_value=0, step=1)
-    term = st.sidebar.selectbox("Term", ["36 months", "60 months"])
-    int_rate = st.sidebar.slider("Interest Rate (%)", min_value=0.0, max_value=20.0, step=0.01)
-    installment = st.sidebar.number_input("Installment ($)", min_value=0, step=1)
-    sub_grade = st.sidebar.selectbox("Sub Grade", ["A1", "A2", "A3", "A4", "A5", "B1", "B2", "B3", "B4", "B5",
+    loan_amnt = col1.number_input("Loan Amount ($)", min_value=0, step=1)
+    term = col1.selectbox("Term", ["36 months", "60 months"])
+    int_rate = col1.slider("Interest Rate (%)", min_value=0.0, max_value=20.0, step=0.01)
+    installment = col1.number_input("Installment ($)", min_value=0, step=1)
+    sub_grade = col1.selectbox("Sub Grade", ["A1", "A2", "A3", "A4", "A5", "B1", "B2", "B3", "B4", "B5",
                                            "C1", "C2", "C3", "C4", "C5", "D1", "D2", "D3", "D4", "D5",
                                            "E1", "E2", "E3", "E4", "E5", "F1", "F2", "F3", "F4", "F5",
                                            "G1", "G2", "G3", "G4", "G5"])
-    home_ownership = st.sidebar.selectbox("Home Ownership", ["MORTAGE", "RENT", "OWN", "OTHER"])
-    annual_inc = st.sidebar.number_input("Annual Income ($)", min_value=0, step=1)
-    verification_status = st.sidebar.selectbox("Verification Status", ["Source Verified", "Verified"])
-    purpose = st.sidebar.selectbox("Purpose", ["Credit Card", "Debt Consolidation", "Home Improvement", "House",
+    home_ownership = col1.selectbox("Home Ownership", ["MORTAGE", "RENT", "OWN", "OTHER"])
+    annual_inc = col1.number_input("Annual Income ($)", min_value=0, step=1)
+    verification_status = col1.selectbox("Verification Status", ["Source Verified", "Verified"])
+    purpose = col1.selectbox("Purpose", ["Credit Card", "Debt Consolidation", "Home Improvement", "House",
                                        "Major Purchase", "Educational", "Medical", "Moving", "Renewable Energy",
                                        "Small Business", "Wedding", "Vacation", "Other"])
-    dti = st.sidebar.number_input("Debt-to-Income Ratio", min_value=0.0, step=0.01)
-    earliest_cr_line = st.sidebar.number_input("Earliest Credit Line Year", min_value=0, step=1)
-    open_acc = st.sidebar.number_input("Open Accounts", min_value=0, step=1)
+    dti = col1.number_input("Debt-to-Income Ratio", min_value=0.0, step=0.01)
+    earliest_cr_line = col1.number_input("Earliest Credit Line Year", min_value=0, step=1)
+    open_acc = col1.number_input("Open Accounts", min_value=0, step=1)
     pub_rec = st.sidebar.number_input("Public Records", min_value=0, step=1)
     revol_bal = st.sidebar.number_input("Revolving Balance ($)", min_value=0, step=1)
     revol_util = st.sidebar.number_input("Revolving Utilization Rate (%)", min_value=0.0, max_value=100.0, step=0.01)
@@ -149,23 +151,7 @@ def main():
         
     })
     
-    if st.button("Submit"):
-        # Call the preprocessing function
-        processed_data = preprocess_data(user_data)
-        model_ann = load_model('ANN_model.h5')
-        # Display the processed data
-        #st.subheader("Processed Application Data:")
-        #st.write(processed_data.shape)
-        #st.write(user_data)
-        res= model_ann.predict(processed_data)
-        if res*100 >= 50:
-            st.write("The Customer will be able to repay the loan")
-        else:
-            st.write("The Customer will not be able to repay the loan") 
-        st.write(res * 100)
     
-    '''if st.button("Submit"):
-        submit_button()'''
         
 if __name__ == "__main__":
     main()
