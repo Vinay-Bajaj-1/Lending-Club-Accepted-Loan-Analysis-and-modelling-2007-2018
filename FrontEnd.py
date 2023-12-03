@@ -136,10 +136,10 @@ def main():
         #st.write(user_data)
         res= model_ann.predict(processed_data)
         if res*100 < 0:
-            st.write("The Customer will not be able to repay the loan")
+            st.write("The Customer will be able to repay the loan")
         else:
             st.write("The Customer will not be able to repay the loan") 
-        st.write(res)
+        st.write(res * 100)
         
         
 if __name__ == "__main__":
