@@ -7,6 +7,7 @@ import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
+st.title('Credit Risk Analysis')
 col1, col2 = st.columns([1.5, 2.5])
 
         
@@ -98,7 +99,7 @@ def preprocess_data(user_data):
     return scaled_data    
 
 def main():
-    st.title('Credit Risk Analysis')
+    
     
     col1.subheader("Loan Application Form")
         
