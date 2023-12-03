@@ -78,7 +78,7 @@ def main():
     st.title("Loan Application Form")
 
     # Get user input for various fields
-    loan_amnt = st.number_input("Loan Amount ($)", min_value=0, step=1)
+    loan_amnt = st.sidebar.number_input("Loan Amount ($)", min_value=0, step=1)
     term = st.selectbox("Term", ["36 months", "60 months"])
     int_rate = st.slider("Interest Rate (%)", min_value=0.0, max_value=20.0, step=0.01)
     installment = st.number_input("Installment ($)", min_value=0, step=1)
