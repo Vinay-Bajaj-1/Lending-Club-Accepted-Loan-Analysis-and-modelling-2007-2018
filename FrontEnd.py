@@ -17,7 +17,7 @@ def submit_config(user_data):
     processed_data = preprocess_data(user_data)
     model_ann = load_model('ANN_model.h5')
     model_lr = joblib.load('logreg_model.pkl')
-    model_dt = joblib.load('dt_clf_model.pkl')
+    model_rf = joblib.load('rf_clf_model.joblib')
     # Display the processed data
     #st.subheader("Processed Application Data:")
     #st.write(processed_data.shape)
@@ -26,7 +26,7 @@ def submit_config(user_data):
     res_lr = model_lr.predict(processed_data)
     col4.write(res_lr)
     
-    res_dt = model_dt.predict(processed_data)
+    res_dt = model_rf.predict(processed_data)
     col5.write(res_dt)
     
     res_ann = model_ann.predict(processed_data)
