@@ -170,6 +170,10 @@ def visualizations():
     col2.bar_chart(d)
     #col2.bar_chart(temp, x = 'loan_status', y = 'loan_amnt')
     
+    sum_by_year = temp.groupby('issue_year')['loan_amnt'].sum()
+    col2.line_chart(sum_by_year)
+    
+    
         
 if __name__ == "__main__":
     main()
