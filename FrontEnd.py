@@ -24,7 +24,7 @@ def submit_config(user_data):
     #st.write(processed_data.shape)
     #st.write(user_data)
     
-    res_ann = model_ann.predict(processed_data)
+    res_ann = model_ann.predict(processed_data)[0][0]
     res_lr = model_lr.predict_proba(processed_data)
     res_rf = model_rf.predict_proba(processed_data)
     
