@@ -156,10 +156,7 @@ def main():
     labels = ['Loans Paid', 'Failed To Pay']
     sum_loan_amnt_1 = pie_df.loc[pie_df['loan_status'] == 1, 'loan_amnt'].sum()
     sum_loan_amnt_0 = pie_df.loc[pie_df['loan_status'] == 0, 'loan_amnt'].sum()
-    fig, ax = plt.subplots()
-    ax.pie([sum_loan_amnt_1, sum_loan_amnt_0], labels=['Loan Status 1', 'Loan Status 0'], autopct='%1.1f%%', startangle=90)
-    ax.axis('equal')
-    col2.pyplot(fig)
+    col2.bar_chart([sum_loan_amnt_1, sum_loan_amnt_0])
     
     
         
