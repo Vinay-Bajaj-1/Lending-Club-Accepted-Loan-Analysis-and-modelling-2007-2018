@@ -114,14 +114,14 @@ def main():
     dti = col1.number_input("Debt-to-Income Ratio", min_value=0.0, step=0.01)
     earliest_cr_line = col1.number_input("Earliest Credit Line Year", min_value=0, step=1)
     open_acc = col1.number_input("Open Accounts", min_value=0, step=1)
-    pub_rec = st.sidebar.number_input("Public Records", min_value=0, step=1)
-    revol_bal = st.sidebar.number_input("Revolving Balance ($)", min_value=0, step=1)
-    revol_util = st.sidebar.number_input("Revolving Utilization Rate (%)", min_value=0.0, max_value=100.0, step=0.01)
-    total_acc = st.sidebar.number_input("Total Accounts", min_value=0, step=1)
-    initial_list_status = st.sidebar.selectbox("Initial List Status", ["W", "T"])
-    application_type = st.sidebar.selectbox("Application Type", ["Joint", "Individual"])
-    mort_acc = st.sidebar.number_input("Mortgage Accounts", min_value=0, step=1)
-    pub_rec_bankruptcies = st.sidebar.number_input("Public Record Bankruptcies", min_value=0, step=1)
+    pub_rec = col1.number_input("Public Records", min_value=0, step=1)
+    revol_bal = col1.number_input("Revolving Balance ($)", min_value=0, step=1)
+    revol_util = col1.number_input("Revolving Utilization Rate (%)", min_value=0.0, max_value=100.0, step=0.01)
+    total_acc = col1.number_input("Total Accounts", min_value=0, step=1)
+    initial_list_status = col1.selectbox("Initial List Status", ["W", "T"])
+    application_type = col1.selectbox("Application Type", ["Joint", "Individual"])
+    mort_acc = col1.number_input("Mortgage Accounts", min_value=0, step=1)
+    pub_rec_bankruptcies = col1.number_input("Public Record Bankruptcies", min_value=0, step=1)
 
     
     user_data = pd.DataFrame({
