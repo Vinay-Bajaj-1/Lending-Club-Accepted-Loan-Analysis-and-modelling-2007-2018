@@ -3,7 +3,7 @@ import pandas as pd
 import joblib
 import keras
 from keras.models import load_model
-import seaborn
+import plotly
 import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
@@ -160,12 +160,25 @@ def main():
     #visualization
     col2.title("Visualization")
     pie_df = pd.read_csv('loan_amnt.csv')
-    pie_df.columns = ['Loan Amount', 'Loan Status']
+    #pie_df.columns = ['Loan Amount', 'Loan Status']
     #pie_df.loc[pie_df['Loan Status' == 1]] = "Fully Paid"
     #pie_df.loc[pie_df['Loan Status' == 0]] = "Charged Off"
-    #sum_loan_amnt_1 = pie_df.loc[pie_df['loan_status'] == 1, 'loan_amnt'].sum()
-    #sum_loan_amnt_0 = pie_df.loc[pie_df['loan_status'] == 0, 'loan_amnt'].sum()
-    col2.bar_chart(pie_df)
+    sum_loan_amnt_1 = pie_df.loc[pie_df['loan_status'] == 1, 'loan_amnt'].sum()
+    sum_loan_amnt_0 = pie_df.loc[pie_df['loan_status'] == 0, 'loan_amnt'].sum()
+    fig = go.Figure(data=[go.Pie(labels=['Loan Status 1', 'Loan Status 0'], values=[sum_loan_amnt_1, sum_loan_amnt_0])])
+
+    # Set layout options (optional)
+    fig.update_layout(title='Sum of loan_amnt based on Loan Status')
+
+    # Display the pie chart using Streamlit
+    col2.plotly_chart(fig)
+    
+
+# Create a pie chart using Plotly
+fig = go.Figure(data=[go.Pie(labels=['Loan Status 1', 'Loan Status 0'], values=[sum_loan_amnt_1, sum_loan_amnt_0])])
+
+# Set layout options (optional)
+fig.update_layout(title='Sum of loan_amnt based on Loan Status')
     
     
         
