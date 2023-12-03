@@ -169,7 +169,7 @@ def visualizations():
 
     col2.bar_chart(d)
     #col2.bar_chart(temp, x = 'loan_status', y = 'loan_amnt')
-    
+    st.write(temp.columns)
     sum_by_year = temp.groupby('issue_year')['loan_amnt'].sum()
     col2.line_chart(sum_by_year, x = 'issue_year', y = 'loan_amnt')
     
