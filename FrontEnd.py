@@ -161,7 +161,7 @@ def main():
     #visualization
     col2.title("Visualization")
     temp = pd.read_csv('loan_amnt.csv')
-    col2.bar_chart(temp, x = 'loan_status', y = 'loan_amount')
+    col2.bar_chart(temp, x = 'loan_status', y = 'loan_amnt')
     
         
 if __name__ == "__main__":
