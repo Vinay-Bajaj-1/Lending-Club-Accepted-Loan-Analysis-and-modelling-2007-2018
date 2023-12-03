@@ -162,7 +162,7 @@ def main():
     pie_df.loc[pie_df['Loan Status' == 0]] = "Charged Off"
     sum_loan_amnt_1 = pie_df.loc[pie_df['loan_status'] == 1, 'loan_amnt'].sum()
     sum_loan_amnt_0 = pie_df.loc[pie_df['loan_status'] == 0, 'loan_amnt'].sum()
-    col2.bar_chart(pie_df, y = 'Loan Amount' x = "Loan Status")
+    col2.bar_chart(pie_df, y = 'Loan Amount', x = "Loan Status")
     
     
         
