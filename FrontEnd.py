@@ -30,8 +30,7 @@ def submit_config(user_data):
     
 
     
-if st.button("Submit"):
-    submit_config(user_data)
+
     
 def preprocess_data(user_data):
     columns = ['loan_amnt', 'term', 'int_rate', 'installment', 'annual_inc',
@@ -101,7 +100,8 @@ def preprocess_data(user_data):
 def main():
     col1.title("Loan Application Form")
     
-      
+    if st.button("Submit"):
+        submit_config(user_data)  
         
     # Get user input for various fields
     loan_amnt = col1.number_input("Loan Amount ($)", min_value=0, step=1)
