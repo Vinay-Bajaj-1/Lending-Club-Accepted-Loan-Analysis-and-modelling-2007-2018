@@ -129,7 +129,7 @@ def main():
     if st.button("Submit"):
         # Call the preprocessing function
         processed_data = preprocess_data(user_data)
-        model_ann = joblib.load('rf_clf_model.pkl')
+        model_ann = joblib.load('dt_clf_model.pkl')
         # Display the processed data
         st.subheader("Processed Application Data:")
         st.write(processed_data.shape)
