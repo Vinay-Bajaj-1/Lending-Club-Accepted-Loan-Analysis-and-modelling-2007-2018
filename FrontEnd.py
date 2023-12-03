@@ -39,15 +39,15 @@ def submit_config(user_data):
     col5.metric(label = 'Random Forest', value = result(res_dt))
     
     
-    #col3.metric(result(res_ann)
-    #res_ann= round(float(res_ann) * 100, 2)
-    col2.subheader("Result") 
-    if res_ann * 100 >= 50:
-        col2.write("The Customer will be able to repay the loan")
-    else:
-        col2.write("The Customer will not be able to repay the loan") 
     
-    #col3.metric('Model Prediction', str(res_ann) + '%' , str(res_ann- 50)+ '%')
+    #res_ann= round(float(res_ann) * 100, 2)
+    #col2.subheader("Result") 
+    #if res_ann * 100 >= 50:
+    #    col2.write("The Customer will be able to repay the loan")
+    #else:
+    #    col2.write("The Customer will not be able to repay the loan") 
+    
+    col3.metric('Model Prediction', str(res_ann) + '%' , str(res_ann- 50)+ '%')
     
     
 
