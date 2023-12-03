@@ -163,8 +163,8 @@ def visualizations():
     #visualization
     col2.subheader("Visualization")
     temp = pd.read_csv('loan_amnt.csv')
-    sum_loan_amnt_1 = temp.loc[temp['loan_status'] == 1, 'loan_amnt'].sum()
-    sum_loan_amnt_0 = temp.loc[temp['loan_status'] == 0, 'loan_amnt'].sum()
+    sum_loan_amnt_1 = temp.loc[temp['loan_status'] == 'Fully Paid', 'loan_amnt'].sum()
+    sum_loan_amnt_0 = temp.loc[temp['loan_status'] == 'Charged Off', 'loan_amnt'].sum()
     d= {'Fully Paid' : sum_loan_amnt_1, 'Charged Off' : sum_loan_amnt_0}
 
     col2.bar_chart(d)
