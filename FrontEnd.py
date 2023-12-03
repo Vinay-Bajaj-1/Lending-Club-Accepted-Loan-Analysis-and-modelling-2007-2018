@@ -11,7 +11,8 @@ st.set_page_config(layout="wide")
 st.title('Credit Risk Analysis')
 col1, col2 = st.columns([1.5, 2.5])
 col4, col3 = col2.columns(2)
-        
+col4.write('Col4')
+col3.write('col3')
 def submit_config(user_data):
     # Call the preprocessing function
     processed_data = preprocess_data(user_data)
