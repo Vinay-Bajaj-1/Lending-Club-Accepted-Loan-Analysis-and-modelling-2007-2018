@@ -160,13 +160,6 @@ def main():
     #visualization
     col2.title("Visualization")
     
-
-# Create a pie chart using Plotly
-fig = go.Figure(data=[go.Pie(labels=['Loan Status 1', 'Loan Status 0'], values=[sum_loan_amnt_1, sum_loan_amnt_0])])
-
-# Set layout options (optional)
-fig.update_layout(title='Sum of loan_amnt based on Loan Status')
-    
     
         
 if __name__ == "__main__":
