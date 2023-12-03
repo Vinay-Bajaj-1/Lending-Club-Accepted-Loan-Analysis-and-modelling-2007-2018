@@ -10,26 +10,34 @@ import matplotlib.pyplot as plt
 st.set_page_config(layout="wide")
 st.title('Credit Risk Analysis')
 col1, col2 = st.columns([1.5, 2.5])
-col4, col3 = col2.columns(2)
-col4.write('Col4')
-col3.write('col3')
+col3, col4, col5 = col2.columns(2)
+
 def submit_config(user_data):
     # Call the preprocessing function
     processed_data = preprocess_data(user_data)
     model_ann = load_model('ANN_model.h5')
+    model_lr = load_model('logreg_model.pkl')
+    model_dt = load_model('dt_clf_model.pkl')
     # Display the processed data
     #st.subheader("Processed Application Data:")
     #st.write(processed_data.shape)
     #st.write(user_data)
-    res = model_ann.predict(processed_data)
-    res= round(float(res) * 100, 2)
+    
+    res_lr = model.predict(processed_data)
+    col3.write(res_lr)
+    
+    res_dt = model.predict(model.predict)
+    col4.write(res_dt)
+    
+    res_ann = model_ann.predict(processed_data)
+    res_ann= round(float(res) * 100, 2)
     col2.subheader("Result") 
-    if res * 100 >= 50:
+    if res_ann * 100 >= 50:
         col2.write("The Customer will be able to repay the loan")
     else:
         col2.write("The Customer will not be able to repay the loan") 
     
-    col2.metric('Model Prediction', str(res) + '%' , str(res- 50)+ '%')
+    col3.metric('Model Prediction', str(res_ann) + '%' , str(res_ann- 50)+ '%')
     
     
 
