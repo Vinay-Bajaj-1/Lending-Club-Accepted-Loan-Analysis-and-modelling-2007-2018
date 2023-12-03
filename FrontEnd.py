@@ -9,8 +9,7 @@ import matplotlib.pyplot as plt
 st.set_page_config(layout="wide")
 col1, col2 = st.columns(2)
 
-if st.button("Submit"):
-        submit_config(user_data)
+
         
 def submit_config(user_data):
     # Call the preprocessing function
@@ -27,6 +26,9 @@ def submit_config(user_data):
         st.write("The Customer will not be able to repay the loan") 
     st.write(res * 100)
 
+    
+if st.button("Submit"):
+    submit_config(user_data)
     
 def preprocess_data(user_data):
     columns = ['loan_amnt', 'term', 'int_rate', 'installment', 'annual_inc',
@@ -53,7 +55,6 @@ def preprocess_data(user_data):
 
     df = pd.DataFrame(columns = columns)
     df.loc[0] = False
-
 
     # 0 - 14
     df.iloc[0, :14] = user_data.iloc[0, :14]
@@ -159,7 +160,7 @@ def main():
     labels = ['Loans Paid', 'Failed To Pay']
     sum_loan_amnt_1 = pie_df.loc[pie_df['loan_status'] == 1, 'loan_amnt'].sum()
     sum_loan_amnt_0 = pie_df.loc[pie_df['loan_status'] == 0, 'loan_amnt'].sum()
-    col2.bar_chart([sum_loan_amnt_1, sum_loan_amnt_0])
+    col2.bar_chart([sum_loan_amnt_1, sum_loan_amnt_0], columns = labels, x = 'Loan Amount' )
     
     
         
