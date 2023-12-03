@@ -30,7 +30,7 @@ def submit_config(user_data):
     #st.write(processed_data.shape)
     #st.write(user_data)
     
-    res_ann = float(model_ann.predict(processed_data)[0][0]) * 100
+    res_ann = round(float(model_ann.predict(processed_data)[0][0]), 2) * 100
     res_lr = model_lr.predict(processed_data)
     res_rf = model_rf.predict(processed_data)
     
@@ -43,7 +43,7 @@ def submit_config(user_data):
     #res_ann= round(float(res_ann) * 100, 2)
     #col2.subheader("Result") 
        
-    col3.metric('Model Prediction', str(round(res_ann, 2)) + '%' , str(res_ann- 50)+ '%')
+    col3.metric('Model Prediction', str(res_ann, 2) + '%' , str(res_ann- 50)+ '%')
     
     
 
