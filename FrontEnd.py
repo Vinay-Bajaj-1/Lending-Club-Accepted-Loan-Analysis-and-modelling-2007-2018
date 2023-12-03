@@ -25,8 +25,8 @@ def submit_config(user_data):
     #st.write(user_data)
     
     res_ann = round(float(model_ann.predict(processed_data)[0][0] * 100), 2)
-    res_lr = round(float(model_lr.predict_proba(processed_data)[0][0] * 100 ), 2)
-    res_rf = round(float(model_rf.predict_proba(processed_data)[0][0] *100),2)
+    res_lr = round(float(model_lr.predict_proba(processed_data)[0][1] * 100 ), 2)
+    res_rf = round(float(model_rf.predict_proba(processed_data)[0][1] *100),2)
     
     
     col3.metric('ANN Prediction', str(res_ann) + '%' , str(res_ann- 75)+ '%')
