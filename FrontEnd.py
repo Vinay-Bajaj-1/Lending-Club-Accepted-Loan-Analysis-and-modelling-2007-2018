@@ -29,10 +29,10 @@ def submit_config(user_data):
     res_rf = model_rf.predict_proba(processed_data)
     
     if res_rf < 0.75:
-        col5.metric(label = 'Random Forest', value = res_rf, res_rf - 0.75)
+        col5.metric(label = 'Random Forest', res_rf, res_rf - 0.75)
     
     if model_lr < 0.75:
-        col4.metric(label = 'Logistic Regression', value = res_lr, res_lr - 0.75)
+        col4.metric(label = 'Logistic Regression',res_lr, res_lr - 0.75)
     
     
     
