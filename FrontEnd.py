@@ -4,6 +4,8 @@ import joblib
 import keras
 from keras.models import load_model
 
+st.set_page_config(layout="wide")
+
 def preprocess_data(user_data):
     columns = ['loan_amnt', 'term', 'int_rate', 'installment', 'annual_inc',
            'dti', 'earliest_cr_line', 'open_acc', 'pub_rec',
