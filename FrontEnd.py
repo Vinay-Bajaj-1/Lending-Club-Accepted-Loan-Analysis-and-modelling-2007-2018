@@ -19,7 +19,7 @@ def submit_config(user_data):
     #st.write(processed_data.shape)
     #st.write(user_data)
     res= model_ann.predict(processed_data)
-    formatted_res = f"{res * 100:.2f}"
+    formatted_res = f"{res[0] * 100:.2f}"
     if formatted_res >= 50:
         col2.write("The Customer will be able to repay the loan")
     else:
