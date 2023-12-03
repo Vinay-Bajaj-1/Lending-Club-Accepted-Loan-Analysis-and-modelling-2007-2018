@@ -36,7 +36,7 @@ def submit_config(user_data):
     col2.bar_chart({'ANN' : res_ann,
                     'Logistic Regression' : res_lr,
                     'Random Forest' : res_rf},
-                  color=["#FF0000", "#0000FF"]
+                  color=["#00589C", "#1891C3","#50E3C2"]
                   )
     
     
