@@ -26,7 +26,7 @@ def submit_config(user_data):
     res_lr = model_lr.predict(processed_data)
     col3.write(res_lr)
     
-    res_dt = model_dt.predict(model.predict)
+    res_dt = model_dt.predict(processed_data)
     col4.write(res_dt)
     
     res_ann = model_ann.predict(processed_data)
