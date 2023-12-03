@@ -24,14 +24,15 @@ def submit_config(user_data):
     #st.write(processed_data.shape)
     #st.write(user_data)
     
-    res_ann = round(float(model_ann.predict(processed_data)[0][0]), 2) * 100
+    res_ann = model_ann.predict(processed_data)
     res_lr = model_lr.predict_proba(processed_data)
     res_rf = model_rf.predict_proba(processed_data)
     
     if res_rf < 0.75:
-        col5.metric(label = 'Random Forest', value = res_rf, 'thresh - 0.5')
+        col5.metric(label = 'Random Forest', value = res_rf, res - 0.75)
     
-    col4.metric(label = 'Logistic Regression', value = result(res_lr))
+    if model_lr < 0.75:
+        col4.metric(label = 'Logistic Regression', value = res_lr, res - 0.75)
     
     
     
