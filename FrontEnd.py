@@ -36,7 +36,7 @@ def submit_config(user_data):
     
     
     col4.metric(label = 'Logistic Regression', value = result(res_lr))
-    col5.metric(label = 'Random Forest', value = result(res_dt))
+    col5.metric(label = 'Random Forest', value = result(res_rf))
     
     
     
