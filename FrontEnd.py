@@ -29,15 +29,10 @@ def submit_config(user_data):
     res_rf = round(float(model_rf.predict_proba(processed_data)[0][1] *100),2)
     
     
-    col3.metric('ANN Prediction', str(res_ann) + '%' , str(res_ann- 75)+ '%')
-    col4.metric('Logistic Regression',str(res_lr) + '%', res_lr - 75)
-    col5.metric('Random Forest', str(res_rf) + '%', res_rf - 75)
-    
-    '''col2.bar_chart({'ANN' : [res_ann],
-                    'Logistic Regression' : [res_lr],
-                    'Random Forest' : [res_rf]},
-                  color=["#00589C", "#1891C3","#50E3C2"]
-                  )'''
+    col3.metric('ANN Prediction', str(res_ann) + '%' , str(round(res_ann- 75,2))+ '%')
+    col4.metric('Logistic Regression',str(res_lr) + '%',  str(round(res_lr - 75,2)) + '%')
+    col5.metric('Random Forest', str(res_rf) + '%', str(round(res_rf - 75, 2))+ '%')
+   
     
     
     
