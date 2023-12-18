@@ -173,7 +173,7 @@ def main():
 def visualizations():
     
     #visualization
-    col2.subheader("Visualizations")
+    col2.subheader("Dataset Visualizations")
     temp = pd.read_csv('loan_amnt.csv')
     sum_loan_amnt_1 = temp.loc[temp['loan_status'] == 'Fully Paid', 'loan_amnt'].sum()
     sum_loan_amnt_0 = temp.loc[temp['loan_status'] == 'Charged Off', 'loan_amnt'].sum()
