@@ -12,6 +12,8 @@ st.title('Credit Risk Analysis')
 col1, col2 = st.columns([2.5,1.5])
 col3, col4, col5 = col2.columns(3)
 
+col6, col7 = col1.columns(2)
+
 def submit_config(user_data):
     # Call the preprocessing function
     processed_data = preprocess_data(user_data)
@@ -33,7 +35,6 @@ def submit_config(user_data):
     col4.metric('Logistic Regression',str(res_lr) + '%',  str(round(res_lr - 75,2)) + '%')
     col5.metric('Random Forest', str(res_rf) + '%', str(round(res_rf - 75, 2))+ '%')
    
-    
     
     
 
@@ -110,31 +111,31 @@ def main():
     col1.subheader("Loan Application Form")
         
     # Get user input for various fields
-    loan_amnt = col1.number_input("Loan Amount ($)", min_value=0, step=1)
-    term = col1.selectbox("Term", ["36 months", "60 months"])
-    int_rate = col1.slider("Interest Rate (%)", min_value=0.0, max_value=20.0, step=0.01)
-    installment = col1.number_input("Installment ($)", min_value=0, step=1)
-    sub_grade = col1.selectbox("Sub Grade", ["A1", "A2", "A3", "A4", "A5", "B1", "B2", "B3", "B4", "B5",
+    loan_amnt = col6.number_input("Loan Amount ($)", min_value=0, step=1)
+    term = col6.selectbox("Term", ["36 months", "60 months"])
+    int_rate = col6.slider("Interest Rate (%)", min_value=0.0, max_value=20.0, step=0.01)
+    installment = col6.number_input("Installment ($)", min_value=0, step=1)
+    sub_grade = col6.selectbox("Sub Grade", ["A1", "A2", "A3", "A4", "A5", "B1", "B2", "B3", "B4", "B5",
                                            "C1", "C2", "C3", "C4", "C5", "D1", "D2", "D3", "D4", "D5",
                                            "E1", "E2", "E3", "E4", "E5", "F1", "F2", "F3", "F4", "F5",
                                            "G1", "G2", "G3", "G4", "G5"])
-    home_ownership = col1.selectbox("Home Ownership", ["MORTAGE", "RENT", "OWN", "OTHER"])
-    annual_inc = col1.number_input("Annual Income ($)", min_value=0, step=1)
-    verification_status = col1.selectbox("Verification Status", ["Source Verified", "Verified"])
-    purpose = col1.selectbox("Purpose", ["Credit Card", "Debt Consolidation", "Home Improvement", "House",
+    home_ownership = col6.selectbox("Home Ownership", ["MORTAGE", "RENT", "OWN", "OTHER"])
+    annual_inc = col6.number_input("Annual Income ($)", min_value=0, step=1)
+    verification_status = col6.selectbox("Verification Status", ["Source Verified", "Verified"])
+    purpose = col6.selectbox("Purpose", ["Credit Card", "Debt Consolidation", "Home Improvement", "House",
                                        "Major Purchase", "Educational", "Medical", "Moving", "Renewable Energy",
                                        "Small Business", "Wedding", "Vacation", "Other"])
-    dti = col1.number_input("Debt-to-Income Ratio", min_value=0.0, step=0.01)
-    earliest_cr_line = col1.number_input("Earliest Credit Line Year", min_value=0, step=1)
-    open_acc = col1.number_input("Open Accounts", min_value=0, step=1)
-    pub_rec = col1.number_input("Public Records", min_value=0, step=1)
-    revol_bal = col1.number_input("Revolving Balance ($)", min_value=0, step=1)
-    revol_util = col1.number_input("Revolving Utilization Rate (%)", min_value=0.0, max_value=100.0, step=0.01)
-    total_acc = col1.number_input("Total Accounts", min_value=0, step=1)
-    initial_list_status = col1.selectbox("Initial List Status", ["W", "T"])
-    application_type = col1.selectbox("Application Type", ["Joint", "Individual"])
-    mort_acc = col1.number_input("Mortgage Accounts", min_value=0, step=1)
-    pub_rec_bankruptcies = col1.number_input("Public Record Bankruptcies", min_value=0, step=1)
+    dti = col7.number_input("Debt-to-Income Ratio", min_value=0.0, step=0.01)
+    earliest_cr_line = col7.number_input("Earliest Credit Line Year", min_value=0, step=1)
+    open_acc = col7.number_input("Open Accounts", min_value=0, step=1)
+    pub_rec = col7.number_input("Public Records", min_value=0, step=1)
+    revol_bal = col7.number_input("Revolving Balance ($)", min_value=0, step=1)
+    revol_util = col7.number_input("Revolving Utilization Rate (%)", min_value=0.0, max_value=100.0, step=0.01)
+    total_acc = col7.number_input("Total Accounts", min_value=0, step=1)
+    initial_list_status = col7.selectbox("Initial List Status", ["W", "T"])
+    application_type = col7.selectbox("Application Type", ["Joint", "Individual"])
+    mort_acc = col7.number_input("Mortgage Accounts", min_value=0, step=1)
+    pub_rec_bankruptcies = col7.number_input("Public Record Bankruptcies", min_value=0, step=1)
 
     
     user_data = pd.DataFrame({
