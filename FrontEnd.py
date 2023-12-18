@@ -126,7 +126,7 @@ def main():
     purpose = col6.selectbox("Purpose", ["Credit Card", "Debt Consolidation", "Home Improvement", "House",
                                        "Major Purchase", "Educational", "Medical", "Moving", "Renewable Energy",
                                        "Small Business", "Wedding", "Vacation", "Other"])
-    dti = col7.number_input("Debt-to-Income Ratio", min_value=0.0, step=0.01)
+    dti = col6.number_input("Debt-to-Income Ratio", min_value=0.0, step=0.01)
     earliest_cr_line = col7.number_input("Earliest Credit Line Year", min_value=0, step=1)
     open_acc = col7.number_input("Open Accounts", min_value=0, step=1)
     pub_rec = col7.number_input("Public Records", min_value=0, step=1)
