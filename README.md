@@ -23,8 +23,3 @@ Random Forest :  [train : 78.5%, test : 80.27%]
 **Result**
 After modelling we found out that XG Boost performed better than other models with 81% accuracy on test data.
 
-_Important note_
-
-_Because of limited computational resource all the project work was implement with 45% of the data as you can see in code file. The result may vary if you use different amount of data._
-
-
