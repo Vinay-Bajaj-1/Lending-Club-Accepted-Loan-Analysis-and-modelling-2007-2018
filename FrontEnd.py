@@ -9,6 +9,8 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(layout="wide")
 st.title('Credit Risk Analysis')
+st.subheader("Loan Application Form")
+
 col1, col2 = st.columns([2.5,1.5])
 col3, col4, col5 = col2.columns(3)
 
@@ -108,7 +110,6 @@ def preprocess_data(user_data):
 def main():
     
     
-    col6.subheader("Loan Application Form")
         
     # Get user input for various fields
     loan_amnt = col6.number_input("Loan Amount ($)", min_value=0, step=1)
