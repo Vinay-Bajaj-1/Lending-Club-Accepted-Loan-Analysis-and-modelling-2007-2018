@@ -110,7 +110,8 @@ def preprocess_data(user_data):
 def main():
     
     
-        
+    if col7.button("Submit"):
+        submit_config(user_data) 
     # Get user input for various fields
     loan_amnt = col6.number_input("Loan Amount ($)", min_value=0, step=1)
     term = col6.selectbox("Term", ["36 months", "60 months"])
@@ -164,8 +165,7 @@ def main():
         
     })
     
-    if col7.button("Submit"):
-        submit_config(user_data)  
+     
     
     
     visualizations()
